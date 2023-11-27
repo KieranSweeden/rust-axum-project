@@ -952,6 +952,8 @@ dependencies = [
  "anyhow",
  "axum",
  "httpc-test",
+ "serde",
+ "serde_json",
  "tokio",
 ]
 

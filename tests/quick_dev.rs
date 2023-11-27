@@ -6,7 +6,7 @@ use anyhow::Result;
 async fn quick_dev() -> Result<()> {
     let http_client = httpc_test::new_client("http://127.0.0.1:8080")?;
 
-    http_client.do_get("/hello").await?.print().await?;
+    http_client.do_get("/hello?name=Jen").await?.print().await?;
 
     Ok(())
 }
