@@ -1,6 +1,6 @@
 #![allow(unused)]
 
-use std::net::SocketAddr;
+pub use self::error::{Error, Result};
 
 use axum::{
     extract::{Path, Query},
@@ -11,10 +11,14 @@ use axum::{
 use serde::Deserialize;
 use tower_http::services::ServeDir;
 
+mod error;
+mod web;
+
 #[tokio::main]
 async fn main() {
     let routes_all = Router::new()
         .merge(routes_hello())
+        .merge(web::routes_login::routes())
         .fallback_service(routes_static());
 
     // region: --- Start Server
